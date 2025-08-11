@@ -1,0 +1,429 @@
+:root {
+    --primary-color: #9E0232;
+    --primary-dark: #6F0123;
+    --secondary-color: #EE3A6A;
+    --light-color: #FDECF2;
+    --text-color: #333;
+    --border-color: #ddd;
+    --error-color: #D32F2F;
+    --success-color: #4CAF50;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(-45deg, #6F0123, #9E0232, #1e1b4b, #EE3A6A);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    overflow-y: auto;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.08);
+    animation: floatAnimation 20s infinite ease-in-out;
+}
+
+.shape1 {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 15%;
+    border-radius: 50%;
+    animation-duration: 25s;
+}
+
+.shape2 {
+    width: 80px;
+    height: 80px;
+    top: 25%;
+    left: 80%;
+    border-radius: 10px;
+    animation-duration: 18s;
+    animation-delay: 3s;
+}
+
+.shape3 {
+    width: 200px;
+    height: 200px;
+    top: 70%;
+    left: 5%;
+    border-radius: 30px;
+    animation-duration: 22s;
+    animation-delay: 5s;
+}
+
+.shape4 {
+    width: 120px;
+    height: 120px;
+    top: 80%;
+    left: 70%;
+    border-radius: 50%;
+    animation-duration: 28s;
+    animation-delay: 2s;
+}
+
+.shape5 {
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    animation-duration: 15s;
+    animation-delay: 7s;
+}
+
+.shape6 {
+    width: 100px;
+    height: 100px;
+    top: 5%;
+    left: 40%;
+    border-radius: 20px;
+    animation-duration: 30s;
+    animation-delay: 1s;
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+
+.form-container, .success-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    color: var(--light-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--light-color);
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    position: relative;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.progress-step {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.progress-step.active {
+    background-color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 40px;
+    font-size: 12px;
+    color: var(--light-color);
+    width: 80px;
+    text-align: center;
+}
+
+.form-step {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group.error label {
+    color: #FFA7A7;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error .radio-group {
+    border-color: var(--error-color);
+    background-color: rgba(211, 47, 47, 0.1);
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(238, 58, 106, 0.3);
+}
+
+input[type="file"] {
+    color: var(--light-color);
+}
+
+input[type="file"]::file-selector-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--primary-color);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-prev {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.btn-prev:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-next, .btn-submit {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-next:hover, .btn-submit:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-submit {
+    display: none;
+}
+
+/* Success Page */
+.success-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.success-container h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.success-container p {
+    color: var(--light-color);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.success-container .icon {
+    font-size: 80px;
+    color: var(--success-color);
+    margin-bottom: 20px;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-container a {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.success-container a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .form-container, .success-container {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    .form-group-inline {
+        flex-direction: column;
+        gap: 0;
+    }
+    .progress-step::after {
+        display: none; /* Hide titles on mobile to save space */
+    }
+    .form-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn {
+        width: 100%;
+    }
+}
